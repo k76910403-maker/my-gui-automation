@@ -1,0 +1,19 @@
+name: Laptop GUI Test
+
+on:
+  workflow_dispatch: # Isse aap manually button daba kar test chala sakenge
+
+jobs:
+  test_gui_job:
+    runs-on: [self-hosted, gui-runner] # Jo tags humne set kiye the
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Test GUI App
+        run: |
+          echo "Opening Notepad on your laptop screen..."
+          powershell -Command "Start-Process notepad.exe"
+          Start-Sleep -Seconds 5
+          echo "Test complete!"
